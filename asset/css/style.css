@@ -35,7 +35,7 @@
   }
 
   .navbar-default .navbar-nav>li>a{
-      border-top:2px solid #2e5f97;
+      border-top:2px solid #575654;
   }
 
   .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
@@ -54,7 +54,7 @@
     font-size:10px;
   }
   .navbar{
-    background-color:#2e5f97;
+    background-color:#b8a60b;
   }
   .title-head{
     padding:6px;
@@ -172,12 +172,12 @@ transition: all 0.5s;
 .tree li::before, .tree li::after{
 content: '';
 position: absolute; top: 0; right: 50%;
-border-top: 1px solid #337ab7;
+border-top: 1px solid #b8a60b;
 width: 50%; height: 20px;
 }
 .tree li::after{
 right: auto; left: 50%;
-border-left: 1px solid #337ab7;
+border-left: 1px solid #b8a60b;
 }
 
 /*We need to remove left-right connectors from elements without 
@@ -197,7 +197,7 @@ border: 0 none;
 }
 /*Adding back the vertical connector to the last nodes*/
 .tree li:last-child::before{
-border-right: 1px solid #337ab7;
+border-right: 1px solid #b8a60b;
 border-radius: 0 5px 0 0;
 -webkit-border-radius: 0 5px 0 0;
 -moz-border-radius: 0 5px 0 0;
@@ -212,12 +212,12 @@ border-radius: 5px 0 0 0;
 .tree ul ul::before{
 content: '';
 position: absolute; top: 0; left: 50%;
-border-left: 1px solid #337ab7;
+border-left: 1px solid #b8a60b;
 width: 0; height: 20px;
 }
 
 .tree li .link{
-border: 1px solid #337ab7;
+border: 1px solid #b8a60b;
 padding: 6px 6px;
 text-decoration: none;
 color: #fff;
@@ -225,7 +225,7 @@ font-weight: bold;
 font-family: arial, verdana, tahoma;
 font-size: 11px;
 display: inline-block;
-background-color: #337ab7;
+background-color: #b8a60b;
 border-radius: 5px 5px 0px 0px;
 width:101px;
 -webkit-border-radius: 5px 5px 0px 0px;

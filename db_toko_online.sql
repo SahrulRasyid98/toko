@@ -1,20 +1,22 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.11
--- http://www.phpmyadmin.net
+-- version 4.8.5
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2019 at 12:59 PM
--- Server version: 5.6.21
--- PHP Version: 5.6.3
+-- Waktu pembuatan: 05 Nov 2020 pada 08.15
+-- Versi server: 10.1.38-MariaDB
+-- Versi PHP: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `db_toko_online`
@@ -23,11 +25,11 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `album`
+-- Struktur dari tabel `album`
 --
 
-CREATE TABLE IF NOT EXISTS `album` (
-`id_album` int(5) NOT NULL,
+CREATE TABLE `album` (
+  `id_album` int(5) NOT NULL,
   `jdl_album` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `album_seo` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `keterangan` text COLLATE latin1_general_ci NOT NULL,
@@ -38,10 +40,10 @@ CREATE TABLE IF NOT EXISTS `album` (
   `jam` time NOT NULL,
   `hari` varchar(20) COLLATE latin1_general_ci NOT NULL,
   `username` varchar(50) COLLATE latin1_general_ci NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=50 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
--- Dumping data for table `album`
+-- Dumping data untuk tabel `album`
 --
 
 INSERT INTO `album` (`id_album`, `jdl_album`, `album_seo`, `keterangan`, `gbr_album`, `aktif`, `hits_album`, `tgl_posting`, `jam`, `hari`, `username`) VALUES
@@ -50,11 +52,11 @@ INSERT INTO `album` (`id_album`, `jdl_album`, `album_seo`, `keterangan`, `gbr_al
 -- --------------------------------------------------------
 
 --
--- Table structure for table `berita`
+-- Struktur dari tabel `berita`
 --
 
-CREATE TABLE IF NOT EXISTS `berita` (
-`id_berita` int(5) NOT NULL,
+CREATE TABLE `berita` (
+  `id_berita` int(5) NOT NULL,
   `id_kategori` int(5) NOT NULL,
   `username` varchar(30) COLLATE latin1_general_ci NOT NULL,
   `judul` varchar(100) COLLATE latin1_general_ci NOT NULL,
@@ -73,32 +75,31 @@ CREATE TABLE IF NOT EXISTS `berita` (
   `dibaca` int(5) NOT NULL DEFAULT '1',
   `tag` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `status` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'Y'
-) ENGINE=MyISAM AUTO_INCREMENT=302 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
--- Dumping data for table `berita`
+-- Dumping data untuk tabel `berita`
 --
 
 INSERT INTO `berita` (`id_berita`, `id_kategori`, `username`, `judul`, `sub_judul`, `youtube`, `judul_seo`, `headline`, `aktif`, `utama`, `isi_berita`, `keterangan_gambar`, `hari`, `tanggal`, `jam`, `gambar`, `dibaca`, `tag`, `status`) VALUES
-(11, 0, 'admin', 'Kenapa Harus Beli Case di Tumblertees?', 'Tumbleertis Printing Technology Japan', '', 'kenapa-harus-beli-case-di-tumblertees', 'N', 'N', 'N', '<p>Tumblertees adalah tempat prinnting case handphone dengan harga murah. Kualitas hasil printing case handphone Tumblertees berkualitas tinggi karena kami menggunakan&nbsp;&nbsp;Printing Technology Japan.</p>\r\n\r\n<p>&nbsp;</p>\r\n', 'Printing Case Teknologi JAPAN', 'Kamis', '2019-11-28', '23:13:58', 'logo1.png', 0, '', 'Y'),
-(301, 0, 'admin', 'Game Fun Ty', 'Hardcase handphone degan design gambar kekinian', '', 'game-fun-ty', 'Y', 'Y', 'Y', '<p>Game Fun Ty adalah karakter llucu dari sebuah game yang fun dan sering dimainkan oleh kalangan milenial. Buat kamu yang inin tampil hits dengan handphone kesayanganmu.</p>\r\n', 'hardcase Game Fun Ty', 'Kamis', '2019-11-28', '23:10:21', 'case7.jpg', 0, '', 'Y');
+(301, 0, 'admin', 'BAJU MERAH SERAGAM', 'BAJU YANG COCOK UNTUK IBU IBU ARISN', '', 'baju-merah-seragam', 'Y', 'Y', 'Y', '<p><strong>AKAN HADIR BAJU SERAGAM UNTUK IBU-IBU ARISAN</strong></p>\r\n', 'GAMIS MERAH SERAGAM', 'Jumat', '2020-08-14', '00:11:16', 'seragam.jpg', 1, '', 'Y');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `download`
+-- Struktur dari tabel `download`
 --
 
-CREATE TABLE IF NOT EXISTS `download` (
-`id_download` int(5) NOT NULL,
+CREATE TABLE `download` (
+  `id_download` int(5) NOT NULL,
   `judul` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `nama_file` text COLLATE latin1_general_ci NOT NULL,
   `tgl_posting` date NOT NULL,
   `hits` int(3) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=45 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
--- Dumping data for table `download`
+-- Dumping data untuk tabel `download`
 --
 
 INSERT INTO `download` (`id_download`, `judul`, `nama_file`, `tgl_posting`, `hits`) VALUES
@@ -115,21 +116,21 @@ INSERT INTO `download` (`id_download`, `judul`, `nama_file`, `tgl_posting`, `hit
 -- --------------------------------------------------------
 
 --
--- Table structure for table `gallery`
+-- Struktur dari tabel `gallery`
 --
 
-CREATE TABLE IF NOT EXISTS `gallery` (
-`id_gallery` int(5) NOT NULL,
+CREATE TABLE `gallery` (
+  `id_gallery` int(5) NOT NULL,
   `id_album` int(5) NOT NULL,
   `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
   `jdl_gallery` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `gallery_seo` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `keterangan` text COLLATE latin1_general_ci NOT NULL,
   `gbr_gallery` varchar(100) COLLATE latin1_general_ci NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=256 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
--- Dumping data for table `gallery`
+-- Dumping data untuk tabel `gallery`
 --
 
 INSERT INTO `gallery` (`id_gallery`, `id_album`, `username`, `jdl_gallery`, `gallery_seo`, `keterangan`, `gbr_gallery`) VALUES
@@ -163,11 +164,11 @@ INSERT INTO `gallery` (`id_gallery`, `id_album`, `username`, `jdl_gallery`, `gal
 -- --------------------------------------------------------
 
 --
--- Table structure for table `halamanstatis`
+-- Struktur dari tabel `halamanstatis`
 --
 
-CREATE TABLE IF NOT EXISTS `halamanstatis` (
-`id_halaman` int(5) NOT NULL,
+CREATE TABLE `halamanstatis` (
+  `id_halaman` int(5) NOT NULL,
   `judul` varchar(100) NOT NULL,
   `judul_seo` varchar(100) NOT NULL,
   `isi_halaman` text NOT NULL,
@@ -177,24 +178,24 @@ CREATE TABLE IF NOT EXISTS `halamanstatis` (
   `dibaca` int(5) NOT NULL DEFAULT '1',
   `jam` time NOT NULL,
   `hari` varchar(20) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=65 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `halamanstatis`
+-- Dumping data untuk tabel `halamanstatis`
 --
 
 INSERT INTO `halamanstatis` (`id_halaman`, `judul`, `judul_seo`, `isi_halaman`, `tgl_posting`, `gambar`, `username`, `dibaca`, `jam`, `hari`) VALUES
-(49, 'Tentang Kami', 'tentang-kami', '<p>Tumblertees adalah</p>\r\n', '2019-12-01', 'logo1.png', 'admin', 2, '15:29:50', ''),
-(50, 'Cara Belanja', 'cara-belanja', '<p>Selamat datang di Toko Online Tumblertees. Demi kenyamanan anda berbelanja, berikut ini kami jelaskan tata cara berbelanja di Toko Online Tumblertees.</p>\r\n\r\n<p><strong>1. Memilih Produk</strong></p>\r\n\r\n<p>Silahkan melihat produk-produk yang tersedia di Tumblertees melalui menu&nbsp;<strong>Categories</strong>. Pada produk yang diinginkan, klik tombol &lsquo;<strong>Add to Cart</strong>&rsquo; untuk memasukkannya ke dalam belanjaan anda. Perhatikan jumlah stok yang tersedia untuk produk tersebut.&nbsp;Tambahkan produk lain sesuai keperluan.</p>\r\n\r\n<p><strong>2.Melihat Belanjaan Anda</strong></p>\r\n\r\n<p>Dibagian kanan&nbsp;atas&nbsp;terlihat jumlah item dalam belanjaan dan&nbsp;total nilai pesanan anda. Bila ingin melihat daftar belanjaan lebih detil, arahkan kursor ke gambar keranjang belanja, kemudian klik tombol&nbsp;&#39;<strong>View Cart</strong>&#39;.</p>\r\n\r\n<p><strong>3. Checkout</strong></p>\r\n\r\n<p>Bila produk yang dipilih sudah lengkap dan sesuai, untuk checkout klik tombol &lsquo;<strong>Checkout</strong>&rsquo;.</p>\r\n\r\n<p><strong>4. Checkout Options</strong></p>\r\n\r\n<p>Anda akan diarahkan pada bagian &lsquo;<strong>Checkout Options</strong>&rsquo;. Bila anda sudah terdaftar (<strong>Returning Customer</strong>), silahkan gunakan email dan password anda untuk login. Bila anda belum terdaftar (<strong>New Customer</strong>), silahkan lakukan pendaftaran terlebih dahulu dengan meng-klik tombol &lsquo;<strong>Continue</strong>&rsquo;.</p>\r\n\r\n<p><strong>5. Membuat Account</strong></p>\r\n\r\n<p>Bagi anda pelanggan baru, silahkan lengkapi beberapa data berikut. Yang perlu diperhatikan adalah pada saat menuliskan nama&nbsp;<strong>Kecamatan</strong>&nbsp;pada field &#39;<strong>Kecamatan (City)</strong>&#39;. Ketikkan beberapa huruf pertama nama kecamatan, kemudian sistem akan menampilkan pilihan nama kecamatan. Pilih yang paling sesuai. Lengkapi data alamat anda. Klik persetujuan&nbsp;<strong>Privacy Policy</strong>. Klik tombol &lsquo;<strong>Continue</strong>&rsquo;.</p>\r\n\r\n<p><strong>6. Cara&nbsp;Pengiriman</strong></p>\r\n\r\n<p>Pada bagian&nbsp;ini anda dapat memilih tarif pengiriman melalui jasa kurir JNE, J&amp;T, Pos atau lainnya&nbsp;yang sesuai. Jumlah nominal ongkos kirim akan otomatis dihitung sesuai dengan pilihan Kecamatan anda dan juga berat dari pesanan. Tuliskan&nbsp;catatan untuk pesanan anda pada bagian&nbsp;<strong>Comment</strong>, bila&nbsp;ada.&nbsp;Kemudian klik tombol &lsquo;<strong>Continue</strong>&rsquo;.</p>\r\n\r\n<p><strong>7. Cara Pembayaran</strong></p>\r\n\r\n<p>Pada bagian&nbsp;ini anda dapat memilih cara pembayaran yang sesuai. Kami saat ini hanya menerima pembayaran melalui&nbsp;<strong>Bank Transfer</strong>.&nbsp;Klik persetujuan&nbsp;<strong>Terms &amp; Conditions</strong>. Klik tombol &lsquo;<strong>Continue</strong>&rsquo;.</p>\r\n\r\n<p><strong>8. Konfirmasi Pemesanan</strong></p>\r\n\r\n<p>Pada bagian&nbsp;konfirmasi pemesanan&nbsp;ini anda dapat melihat sekali lagi rincian pesanan anda.&nbsp;Bila sudah tidak ada perubahan, klik tombol &lsquo;<strong>Confirm Order</strong>&rsquo;. Akan ada pesan bahwa pesanan anda sudah diproses dan bersamaan dengan itu kami mengirimkan email berisi&nbsp;rincian&nbsp;pesanan anda.</p>\r\n\r\n<p><strong>9. Pembayaran dan Konfirmasi Pembayaran</strong></p>\r\n\r\n<p>Silahkan lakukan pembayaran pada nomor rekening yang tercantum pada email yang kami kirimkan. Kemudian lakukan konfirmasi pembayaran agar kami dapat segera memproses pengiriman pesanan anda.</p>\r\n\r\n<p>Agar pesanan dapat diproses untuk pengiriman di hari yang sama, konfirmasi pembayaran ditunggu paling lambat jam 15.00 WIB (atau jam 12.00 WIB untuk hari Sabtu). Lewat dari itu diproses untuk pengiriman di hari/kesempatan berikutnya. Hari Minggu/Tanggal Merah, kantor libur dan tidak ada pengiriman.</p>\r\n\r\n<p><strong>10. Pengiriman dan Tracking Pengiriman</strong></p>\r\n\r\n<p>Apabila kami pengiriman telah kami lakukan, status pesanan anda akan diupdate dan kami akan sampaikan juga nomor tracking dari jasa kurir JNE melalui email.</p>\r\n', '2019-12-01', '', 'admin', 1, '15:28:49', '');
+(49, 'Tentang Kami', 'tentang-kami', '<p>ATTIR MOSLEMWEAR ADALAM APA?</p>\r\n', '2020-08-14', 'LOGO.png', 'admin', 4, '01:25:49', ''),
+(50, 'Cara Belanja', 'cara-belanja', '<p>Selamat datang di Toko Online Tumblertees. Demi kenyamanan anda berbelanja, berikut ini kami jelaskan tata cara berbelanja di Toko Online Tumblertees.</p>\r\n\r\n<p><strong>1. Memilih Produk</strong></p>\r\n\r\n<p>Silahkan melihat produk-produk yang tersedia di Tumblertees melalui menu&nbsp;<strong>Categories</strong>. Pada produk yang diinginkan, klik tombol &lsquo;<strong>Add to Cart</strong>&rsquo; untuk memasukkannya ke dalam belanjaan anda. Perhatikan jumlah stok yang tersedia untuk produk tersebut.&nbsp;Tambahkan produk lain sesuai keperluan.</p>\r\n\r\n<p><strong>2.Melihat Belanjaan Anda</strong></p>\r\n\r\n<p>Dibagian kanan&nbsp;atas&nbsp;terlihat jumlah item dalam belanjaan dan&nbsp;total nilai pesanan anda. Bila ingin melihat daftar belanjaan lebih detil, arahkan kursor ke gambar keranjang belanja, kemudian klik tombol&nbsp;&#39;<strong>View Cart</strong>&#39;.</p>\r\n\r\n<p><strong>3. Checkout</strong></p>\r\n\r\n<p>Bila produk yang dipilih sudah lengkap dan sesuai, untuk checkout klik tombol &lsquo;<strong>Checkout</strong>&rsquo;.</p>\r\n\r\n<p><strong>4. Checkout Options</strong></p>\r\n\r\n<p>Anda akan diarahkan pada bagian &lsquo;<strong>Checkout Options</strong>&rsquo;. Bila anda sudah terdaftar (<strong>Returning Customer</strong>), silahkan gunakan email dan password anda untuk login. Bila anda belum terdaftar (<strong>New Customer</strong>), silahkan lakukan pendaftaran terlebih dahulu dengan meng-klik tombol &lsquo;<strong>Continue</strong>&rsquo;.</p>\r\n\r\n<p><strong>5. Membuat Account</strong></p>\r\n\r\n<p>Bagi anda pelanggan baru, silahkan lengkapi beberapa data berikut. Yang perlu diperhatikan adalah pada saat menuliskan nama&nbsp;<strong>Kecamatan</strong>&nbsp;pada field &#39;<strong>Kecamatan (City)</strong>&#39;. Ketikkan beberapa huruf pertama nama kecamatan, kemudian sistem akan menampilkan pilihan nama kecamatan. Pilih yang paling sesuai. Lengkapi data alamat anda. Klik persetujuan&nbsp;<strong>Privacy Policy</strong>. Klik tombol &lsquo;<strong>Continue</strong>&rsquo;.</p>\r\n\r\n<p><strong>6. Cara&nbsp;Pengiriman</strong></p>\r\n\r\n<p>Pada bagian&nbsp;ini anda dapat memilih tarif pengiriman melalui jasa kurir JNE, J&amp;T, Pos atau lainnya&nbsp;yang sesuai. Jumlah nominal ongkos kirim akan otomatis dihitung sesuai dengan pilihan Kecamatan anda dan juga berat dari pesanan. Tuliskan&nbsp;catatan untuk pesanan anda pada bagian&nbsp;<strong>Comment</strong>, bila&nbsp;ada.&nbsp;Kemudian klik tombol &lsquo;<strong>Continue</strong>&rsquo;.</p>\r\n\r\n<p><strong>7. Cara Pembayaran</strong></p>\r\n\r\n<p>Pada bagian&nbsp;ini anda dapat memilih cara pembayaran yang sesuai. Kami saat ini hanya menerima pembayaran melalui&nbsp;<strong>Bank Transfer</strong>.&nbsp;Klik persetujuan&nbsp;<strong>Terms &amp; Conditions</strong>. Klik tombol &lsquo;<strong>Continue</strong>&rsquo;.</p>\r\n\r\n<p><strong>8. Konfirmasi Pemesanan</strong></p>\r\n\r\n<p>Pada bagian&nbsp;konfirmasi pemesanan&nbsp;ini anda dapat melihat sekali lagi rincian pesanan anda.&nbsp;Bila sudah tidak ada perubahan, klik tombol &lsquo;<strong>Confirm Order</strong>&rsquo;. Akan ada pesan bahwa pesanan anda sudah diproses dan bersamaan dengan itu kami mengirimkan email berisi&nbsp;rincian&nbsp;pesanan anda.</p>\r\n\r\n<p><strong>9. Pembayaran dan Konfirmasi Pembayaran</strong></p>\r\n\r\n<p>Silahkan lakukan pembayaran pada nomor rekening yang tercantum pada email yang kami kirimkan. Kemudian lakukan konfirmasi pembayaran agar kami dapat segera memproses pengiriman pesanan anda.</p>\r\n\r\n<p>Agar pesanan dapat diproses untuk pengiriman di hari yang sama, konfirmasi pembayaran ditunggu paling lambat jam 15.00 WIB (atau jam 12.00 WIB untuk hari Sabtu). Lewat dari itu diproses untuk pengiriman di hari/kesempatan berikutnya. Hari Minggu/Tanggal Merah, kantor libur dan tidak ada pengiriman.</p>\r\n\r\n<p><strong>10. Pengiriman dan Tracking Pengiriman</strong></p>\r\n\r\n<p>Apabila kami pengiriman telah kami lakukan, status pesanan anda akan diupdate dan kami akan sampaikan juga nomor tracking dari jasa kurir JNE melalui email.</p>\r\n', '2019-12-01', '', 'admin', 5, '15:28:49', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hubungi`
+-- Struktur dari tabel `hubungi`
 --
 
-CREATE TABLE IF NOT EXISTS `hubungi` (
-`id_hubungi` int(5) NOT NULL,
+CREATE TABLE `hubungi` (
+  `id_hubungi` int(5) NOT NULL,
   `nama` varchar(50) COLLATE latin1_general_ci NOT NULL,
   `email` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `subjek` varchar(100) COLLATE latin1_general_ci NOT NULL,
@@ -202,26 +203,27 @@ CREATE TABLE IF NOT EXISTS `hubungi` (
   `tanggal` date NOT NULL,
   `jam` time NOT NULL,
   `dibaca` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'N'
-) ENGINE=MyISAM AUTO_INCREMENT=48 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
--- Dumping data for table `hubungi`
+-- Dumping data untuk tabel `hubungi`
 --
 
 INSERT INTO `hubungi` (`id_hubungi`, `nama`, `email`, `subjek`, `pesan`, `tanggal`, `jam`, `dibaca`) VALUES
 (34, 'Landung Trilaksono', 'landungtrilaksono@gmail.com', 'Nomer kontak jurusan akuntansi', 'Maaf saya mau hubungi jurusan akuntansi di nomer berapa ya? Terima kasih', '2013-10-16', '00:00:00', 'Y'),
 (35, 'yusri renor', 'aciafifah@gmail.com', 'pertanyaan', 'bagaimana cara mengunduh nomor ujian fak. pertanian', '2014-01-19', '00:00:00', 'Y'),
 (38, 'Udin Sedunia', 'udin.sedunia@gmail.com', 'Ip Pengirim : 120.177.28.244', 'Silahkan menghubungi kami melalui private message melalui form yang berada pada bagian kanan halaman ini. Kritik dan saran Anda sangat penting bagi kami untuk terus meningkatkan kualitas produk dan layanan yang kami berikan kepada Anda.', '2015-06-02', '00:00:00', 'Y'),
-(39, 'Robby Prihandaya', 'robby.prihandaya@gmail.com', 'Mau tanya Sesuatu', 'November ini,  Indonesia akan disuguhkan salah satu konser megah dari legenda musik dunia yaitu Elton John', '2016-05-12', '19:33:58', 'Y');
+(39, 'Robby Prihandaya', 'robby.prihandaya@gmail.com', 'Mau tanya Sesuatu', 'November ini,  Indonesia akan disuguhkan salah satu konser megah dari legenda musik dunia yaitu Elton John', '2016-05-12', '19:33:58', 'Y'),
+(48, 'A', 'A', '::1', 'AAAAAAAAAA', '2020-08-14', '00:26:48', 'Y');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `identitas`
+-- Struktur dari tabel `identitas`
 --
 
-CREATE TABLE IF NOT EXISTS `identitas` (
-`id_identitas` int(5) NOT NULL,
+CREATE TABLE `identitas` (
+  `id_identitas` int(5) NOT NULL,
   `nama_website` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `url` varchar(100) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
@@ -234,22 +236,22 @@ CREATE TABLE IF NOT EXISTS `identitas` (
   `meta_keyword` varchar(250) NOT NULL,
   `favicon` varchar(50) NOT NULL,
   `maps` text NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `identitas`
+-- Dumping data untuk tabel `identitas`
 --
 
 INSERT INTO `identitas` (`id_identitas`, `nama_website`, `email`, `url`, `facebook`, `rekening`, `no_telp`, `kota_id`, `alamat`, `meta_deskripsi`, `meta_keyword`, `favicon`, `maps`) VALUES
-(1, 'Tumblertees', 'tumblertees@gmail.com', 'http://localhost/reseller', '', '#', 'Telp. 081510267486', 115, 'Jl. Kali Licin No.36B, Pancoran MAS, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16435', 'Menyajikan produk bahan terbaik, kualitas print terbaik, tekini, tercepat, dan terpercaya.', 'Tumblertees toko case handhpone terpercaya.', 'logo15.png', 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3989.3358607198243!2d100.35483479999999!3d-0.8910373999999999!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd4b8aa1a4e0441%3A0x3f81ebb48d31a38b!2sTunggul+Hitam%2C+Padang+Utara%2C+Kota+Padang%2C+Sumatera+Barat+25173!5e0!3m2!1sid!2sid!4v1408275531365');
+(1, 'ATTIRE MOSLEMWEAR', 'sahrul.unas@gmail.com', 'https://l.instagram.com/?u=https%3A%2F%2Flinktr.ee%2FAttiremoslemwear&e=ATOankuiGZ6kub--uA2bYmgnaiT2', 'IG : @sahrul.rasyid', '0816692846', 'Telp. 082111834946', 154, 'JL .Manunggal XIII No.28c, Balekamnag, Kramat Jati Jakarta Timur', 'Menyajikan produk bahan terbaik, kualitas BAHAN terbaik, tekini, tercepat, dan terpercaya.', 'ATTIRE toko BUSANA MUSLIM.', 'attire_putih.png', '#');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `iklantengah`
+-- Struktur dari tabel `iklantengah`
 --
 
-CREATE TABLE IF NOT EXISTS `iklantengah` (
+CREATE TABLE `iklantengah` (
   `id_iklantengah` int(5) NOT NULL,
   `judul` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
@@ -261,20 +263,20 @@ CREATE TABLE IF NOT EXISTS `iklantengah` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kategori`
+-- Struktur dari tabel `kategori`
 --
 
-CREATE TABLE IF NOT EXISTS `kategori` (
-`id_kategori` int(5) NOT NULL,
+CREATE TABLE `kategori` (
+  `id_kategori` int(5) NOT NULL,
   `nama_kategori` varchar(50) COLLATE latin1_general_ci NOT NULL,
   `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
   `kategori_seo` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `aktif` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'Y',
   `sidebar` int(10) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=57 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
--- Dumping data for table `kategori`
+-- Dumping data untuk tabel `kategori`
 --
 
 INSERT INTO `kategori` (`id_kategori`, `nama_kategori`, `username`, `kategori_seo`, `aktif`, `sidebar`) VALUES
@@ -287,39 +289,39 @@ INSERT INTO `kategori` (`id_kategori`, `nama_kategori`, `username`, `kategori_se
 -- --------------------------------------------------------
 
 --
--- Table structure for table `logo`
+-- Struktur dari tabel `logo`
 --
 
-CREATE TABLE IF NOT EXISTS `logo` (
-`id_logo` int(5) NOT NULL,
+CREATE TABLE `logo` (
+  `id_logo` int(5) NOT NULL,
   `gambar` varchar(100) COLLATE latin1_general_ci NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
--- Dumping data for table `logo`
+-- Dumping data untuk tabel `logo`
 --
 
 INSERT INTO `logo` (`id_logo`, `gambar`) VALUES
-(15, 'logo12.png');
+(15, 'attire_putih1.png');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menu`
+-- Struktur dari tabel `menu`
 --
 
-CREATE TABLE IF NOT EXISTS `menu` (
-`id_menu` int(5) NOT NULL,
+CREATE TABLE `menu` (
+  `id_menu` int(5) NOT NULL,
   `id_parent` int(5) NOT NULL DEFAULT '0',
   `nama_menu` varchar(30) NOT NULL,
   `link` varchar(100) NOT NULL,
   `aktif` enum('Ya','Tidak') NOT NULL DEFAULT 'Ya',
   `position` enum('Top','Bottom') DEFAULT 'Bottom',
   `urutan` int(3) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=148 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `menu`
+-- Dumping data untuk tabel `menu`
 --
 
 INSERT INTO `menu` (`id_menu`, `id_parent`, `nama_menu`, `link`, `aktif`, `position`, `urutan`) VALUES
@@ -342,11 +344,11 @@ INSERT INTO `menu` (`id_menu`, `id_parent`, `nama_menu`, `link`, `aktif`, `posit
 -- --------------------------------------------------------
 
 --
--- Table structure for table `modul`
+-- Struktur dari tabel `modul`
 --
 
-CREATE TABLE IF NOT EXISTS `modul` (
-`id_modul` int(5) NOT NULL,
+CREATE TABLE `modul` (
+  `id_modul` int(5) NOT NULL,
   `nama_modul` varchar(50) COLLATE latin1_general_ci NOT NULL,
   `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
   `link` varchar(100) COLLATE latin1_general_ci NOT NULL,
@@ -357,10 +359,10 @@ CREATE TABLE IF NOT EXISTS `modul` (
   `aktif` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'Y',
   `urutan` int(5) NOT NULL,
   `link_seo` varchar(50) COLLATE latin1_general_ci NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=81 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
--- Dumping data for table `modul`
+-- Dumping data untuk tabel `modul`
 --
 
 INSERT INTO `modul` (`id_modul`, `nama_modul`, `username`, `link`, `static_content`, `gambar`, `publish`, `status`, `aktif`, `urutan`, `link_seo`) VALUES
@@ -386,74 +388,76 @@ INSERT INTO `modul` (`id_modul`, `nama_modul`, `username`, `link`, `static_conte
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pasangiklan`
+-- Struktur dari tabel `pasangiklan`
 --
 
-CREATE TABLE IF NOT EXISTS `pasangiklan` (
-`id_pasangiklan` int(5) NOT NULL,
+CREATE TABLE `pasangiklan` (
+  `id_pasangiklan` int(5) NOT NULL,
   `judul` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
   `url` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `gambar` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `tgl_posting` date NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
--- Dumping data for table `pasangiklan`
+-- Dumping data untuk tabel `pasangiklan`
 --
 
 INSERT INTO `pasangiklan` (`id_pasangiklan`, `judul`, `username`, `url`, `gambar`, `tgl_posting`) VALUES
-(32, 'Temukan juga kami di Tokopedia', 'admin', 'https://www.tokopedia.com', 'tokopedia1.png', '2018-03-04'),
-(33, 'Temukan juga kami di Bukalapak', 'admin', 'https://www.bukalapak.com', 'download.png', '2018-03-04');
+(32, 'Temukan juga kami di Tokopedia', 'admin', 'https://www.tokopedia.com/attiremoslemwear?source=universe&st=product', 'tokopedia1.png', '2020-08-14'),
+(34, 'Temukan juga kami di Shopee', 'admin', 'https://shopee.co.id/attiremoslemwear', 'shopee.png', '2020-08-14');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rb_kategori_produk`
+-- Struktur dari tabel `rb_kategori_produk`
 --
 
-CREATE TABLE IF NOT EXISTS `rb_kategori_produk` (
-`id_kategori_produk` int(11) NOT NULL,
+CREATE TABLE `rb_kategori_produk` (
+  `id_kategori_produk` int(11) NOT NULL,
   `nama_kategori` varchar(255) NOT NULL,
   `kategori_seo` varchar(255) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `rb_kategori_produk`
+-- Dumping data untuk tabel `rb_kategori_produk`
 --
 
 INSERT INTO `rb_kategori_produk` (`id_kategori_produk`, `nama_kategori`, `kategori_seo`) VALUES
-(1, 'Soft Case', 'soft-case'),
-(2, 'Hard Case', 'hard-case'),
-(11, 'Case Couple', 'case-couple');
+(1, 'Gamis', 'gamis'),
+(2, 'Jilbab', 'jilbab'),
+(11, 'baju', 'baju'),
+(3, 'celana', 'celana'),
+(4, 'tas', 'tas');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rb_keterangan`
+-- Struktur dari tabel `rb_keterangan`
 --
 
-CREATE TABLE IF NOT EXISTS `rb_keterangan` (
-`id_keterangan` int(5) NOT NULL,
+CREATE TABLE `rb_keterangan` (
+  `id_keterangan` int(5) NOT NULL,
   `keterangan` text NOT NULL,
   `tanggal_posting` date NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `rb_keterangan`
+-- Dumping data untuk tabel `rb_keterangan`
 --
 
 INSERT INTO `rb_keterangan` (`id_keterangan`, `keterangan`, `tanggal_posting`) VALUES
-(1, '<p><strong>Informasi Order :</strong></p><p>Pastikan barang yang dibeli sesuai tipe Handphone..</p><p>Happy Shoping.......</p>', '2019-11-16');
+(1, '<p><strong>Informasi Order :</strong></p>\r\n\r\n<p>Pastikan barang yang dibeli sesuai ukuran yang telah di pilih sebelumnya di catalog yaaa!</p>\r\n\r\n<p>Happy Shoping.......</p>\r\n', '2020-11-04');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rb_konfirmasi`
+-- Struktur dari tabel `rb_konfirmasi`
 --
 
-CREATE TABLE IF NOT EXISTS `rb_konfirmasi` (
-`id_konfirmasi_pembayaran` int(11) NOT NULL,
+CREATE TABLE `rb_konfirmasi` (
+  `id_konfirmasi_pembayaran` int(11) NOT NULL,
   `id_penjualan` int(11) NOT NULL,
   `total_transfer` varchar(20) NOT NULL,
   `id_rekening` int(11) NOT NULL,
@@ -461,10 +465,10 @@ CREATE TABLE IF NOT EXISTS `rb_konfirmasi` (
   `tanggal_transfer` date NOT NULL,
   `bukti_transfer` varchar(255) NOT NULL,
   `waktu_konfirmasi` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `rb_konfirmasi`
+-- Dumping data untuk tabel `rb_konfirmasi`
 --
 
 INSERT INTO `rb_konfirmasi` (`id_konfirmasi_pembayaran`, `id_penjualan`, `total_transfer`, `id_rekening`, `nama_pengirim`, `tanggal_transfer`, `bukti_transfer`, `waktu_konfirmasi`) VALUES
@@ -475,16 +479,20 @@ INSERT INTO `rb_konfirmasi` (`id_konfirmasi_pembayaran`, `id_penjualan`, `total_
 (13, 16, 'Rp 59,252', 1, 'Abay Junior', '2019-11-29', 'logo14.png', '2019-11-29 00:54:07'),
 (14, 18, 'Rp 59,727', 1, 'alwi saepul', '2019-12-03', 'dfd_1.png', '2019-12-03 21:38:19'),
 (15, 19, 'Rp 65,859', 2, 'alwi saepul', '2019-12-03', 'dfd_11.png', '2019-12-03 21:39:44'),
-(16, 20, 'Rp 62,002', 2, 'alwi saepul', '2019-12-03', 'dfd_12.png', '2019-12-03 21:41:03');
+(16, 20, 'Rp 62,002', 2, 'alwi saepul', '2019-12-03', 'dfd_12.png', '2019-12-03 21:41:03'),
+(17, 22, 'Rp 45,702', 1, 'Sahrul Rasyid', '2020-08-12', 'tokline.png', '2020-08-12 17:19:49'),
+(18, 23, 'Rp 15,000,333', 3, 'Sahrul Rasyid', '2020-08-13', 'kanan.png', '2020-08-13 00:25:17'),
+(19, 17, 'Rp 62,640', 3, 'contoh aja ya', '2020-08-14', 'contoh_transfer.jpg', '2020-08-14 13:01:50'),
+(20, 25, 'Rp 150,714', 3, 'sahrul rasyid', '2020-11-05', 'diskon.jpg', '2020-11-05 13:56:12');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rb_konsumen`
+-- Struktur dari tabel `rb_konsumen`
 --
 
-CREATE TABLE IF NOT EXISTS `rb_konsumen` (
-`id_konsumen` int(11) NOT NULL,
+CREATE TABLE `rb_konsumen` (
+  `id_konsumen` int(11) NOT NULL,
   `username` varchar(60) NOT NULL,
   `password` text NOT NULL,
   `nama_lengkap` varchar(255) NOT NULL,
@@ -497,10 +505,10 @@ CREATE TABLE IF NOT EXISTS `rb_konsumen` (
   `no_hp` varchar(15) NOT NULL,
   `foto` varchar(255) NOT NULL,
   `tanggal_daftar` date NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `rb_konsumen`
+-- Dumping data untuk tabel `rb_konsumen`
 --
 
 INSERT INTO `rb_konsumen` (`id_konsumen`, `username`, `password`, `nama_lengkap`, `email`, `jenis_kelamin`, `tanggal_lahir`, `tempat_lahir`, `alamat_lengkap`, `kota_id`, `no_hp`, `foto`, `tanggal_daftar`) VALUES
@@ -511,22 +519,24 @@ INSERT INTO `rb_konsumen` (`id_konsumen`, `username`, `password`, `nama_lengkap`
 (34, 'vina', 'd7d2f602e155ba700ed76c48d9a48009b9383e8d17435bfb0fe8ad7c664d4002f16cc7a65c6fb066963714a794f96441ef7f9b9c1b1456acfb9225cbad474fb0', 'vina', 'vina@gmail.com', 'Laki-laki', '0000-00-00', '', 'Jalan Madu, Sawangan', 115, '08782637656', '', '2019-12-03'),
 (35, 'indra', 'd7d2f602e155ba700ed76c48d9a48009b9383e8d17435bfb0fe8ad7c664d4002f16cc7a65c6fb066963714a794f96441ef7f9b9c1b1456acfb9225cbad474fb0', 'indrawan', 'indrawan@gmail.com', 'Laki-laki', '0000-00-00', '', 'jalan mangkok,Pasar  Senen', 152, '08987654656', '', '2019-12-03'),
 (36, 'haekal', 'd7d2f602e155ba700ed76c48d9a48009b9383e8d17435bfb0fe8ad7c664d4002f16cc7a65c6fb066963714a794f96441ef7f9b9c1b1456acfb9225cbad474fb0', 'Haekal kibo', 'haekal@gmail.com', 'Laki-laki', '0000-00-00', '', 'Jalan Mangga, Parung', 457, '08545242342', '', '2019-12-03'),
-(37, 'alwi', 'd7d2f602e155ba700ed76c48d9a48009b9383e8d17435bfb0fe8ad7c664d4002f16cc7a65c6fb066963714a794f96441ef7f9b9c1b1456acfb9225cbad474fb0', 'alwi saepul', 'alwi@gmail.com', 'Laki-laki', '0000-00-00', '', 'Jalan Sabang, Panggaran', 430, '0876672654', '', '2019-12-03');
+(37, 'alwi', 'd7d2f602e155ba700ed76c48d9a48009b9383e8d17435bfb0fe8ad7c664d4002f16cc7a65c6fb066963714a794f96441ef7f9b9c1b1456acfb9225cbad474fb0', 'alwi saepul', 'alwi@gmail.com', 'Laki-laki', '0000-00-00', '', 'Jalan Sabang, Panggaran', 430, '0876672654', '', '2019-12-03'),
+(38, 'sahrul98', 'a0521f14cb7893743fdf6fef93392c1dc4a0112821d9ee723b02d4bdcaaa2638712c1b3454b516ab83df1d7021932fd85b624840b6b4634f924e8da7fcb57b99', 'Sahrul Rasyid', 'sahrul.unas@gmail.com', 'Laki-laki', '0000-00-00', '', 'condet', 18, '08328382838', '', '2020-08-12'),
+(39, 'sahrul', 'c91c5b95dccfd21ec8dc0f04033e7d26f54220f1697ad1ca744fa66a9699be062b98f26dc3f9b9e28838580dbf4d36c923d37ddfa77d9a901c78efd87f1c1580', 'sahrul rasyid', 'owel.ochit@gmail.com', 'Laki-laki', '0000-00-00', '', 'condet', 154, '0212020212', '', '2020-11-05');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rb_kota`
+-- Struktur dari tabel `rb_kota`
 --
 
-CREATE TABLE IF NOT EXISTS `rb_kota` (
-`kota_id` int(11) NOT NULL,
+CREATE TABLE `rb_kota` (
+  `kota_id` int(11) NOT NULL,
   `provinsi_id` int(11) NOT NULL,
   `nama_kota` varchar(100) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=502 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `rb_kota`
+-- Dumping data untuk tabel `rb_kota`
 --
 
 INSERT INTO `rb_kota` (`kota_id`, `provinsi_id`, `nama_kota`) VALUES
@@ -1035,41 +1045,42 @@ INSERT INTO `rb_kota` (`kota_id`, `provinsi_id`, `nama_kota`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rb_pembelian`
+-- Struktur dari tabel `rb_pembelian`
 --
 
-CREATE TABLE IF NOT EXISTS `rb_pembelian` (
-`id_pembelian` int(11) NOT NULL,
+CREATE TABLE `rb_pembelian` (
+  `id_pembelian` int(11) NOT NULL,
   `kode_pembelian` varchar(50) NOT NULL,
   `id_supplier` int(11) NOT NULL,
   `waktu_beli` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `rb_pembelian`
+-- Dumping data untuk tabel `rb_pembelian`
 --
 
 INSERT INTO `rb_pembelian` (`id_pembelian`, `kode_pembelian`, `id_supplier`, `waktu_beli`) VALUES
 (9, 'PO-0002', 3, '2018-11-28 22:52:09'),
-(8, 'PO-0001', 2, '2018-11-28 22:43:33');
+(8, 'PO-0001', 2, '2018-11-28 22:43:33'),
+(10, 'PC-0', 4, '2020-08-15 02:04:59');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rb_pembelian_detail`
+-- Struktur dari tabel `rb_pembelian_detail`
 --
 
-CREATE TABLE IF NOT EXISTS `rb_pembelian_detail` (
-`id_pembelian_detail` int(11) NOT NULL,
+CREATE TABLE `rb_pembelian_detail` (
+  `id_pembelian_detail` int(11) NOT NULL,
   `id_pembelian` int(11) NOT NULL,
   `id_produk` int(11) NOT NULL,
   `harga_pesan` int(11) NOT NULL,
   `jumlah_pesan` int(11) NOT NULL,
   `satuan` varchar(50) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `rb_pembelian_detail`
+-- Dumping data untuk tabel `rb_pembelian_detail`
 --
 
 INSERT INTO `rb_pembelian_detail` (`id_pembelian_detail`, `id_pembelian`, `id_produk`, `harga_pesan`, `jumlah_pesan`, `satuan`) VALUES
@@ -1086,17 +1097,18 @@ INSERT INTO `rb_pembelian_detail` (`id_pembelian_detail`, `id_pembelian`, `id_pr
 (26, 9, 20, 20000, 40, 'Ya'),
 (25, 8, 19, 20000, 30, 'ya'),
 (37, 8, 29, 30000, 300, 'pcs'),
-(38, 8, 28, 30000, 350, 'ya'),
-(39, 8, 26, 30000, 300, 'ya');
+(38, 8, 28, 60000, 250, 'ya'),
+(39, 8, 26, 60000, 150, 'ya'),
+(40, 10, 0, 0, 0, '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rb_penjualan`
+-- Struktur dari tabel `rb_penjualan`
 --
 
-CREATE TABLE IF NOT EXISTS `rb_penjualan` (
-`id_penjualan` int(11) NOT NULL,
+CREATE TABLE `rb_penjualan` (
+  `id_penjualan` int(11) NOT NULL,
   `kode_transaksi` varchar(50) NOT NULL,
   `id_pembeli` int(11) NOT NULL,
   `diskon` int(11) NOT NULL,
@@ -1105,14 +1117,14 @@ CREATE TABLE IF NOT EXISTS `rb_penjualan` (
   `ongkir` int(11) NOT NULL,
   `waktu_transaksi` datetime NOT NULL,
   `proses` enum('0','1','2','3') NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `rb_penjualan`
+-- Dumping data untuk tabel `rb_penjualan`
 --
 
 INSERT INTO `rb_penjualan` (`id_penjualan`, `kode_transaksi`, `id_pembeli`, `diskon`, `kurir`, `service`, `ongkir`, `waktu_transaksi`, `proses`) VALUES
-(9, 'TRX-20191116144154', 29, 0, 'tiki', 'REG', 20000, '2019-11-16 14:42:34', '1'),
+(9, 'TRX-20191116144154', 29, 0, 'tiki', 'REG', 20000, '2019-11-16 14:42:34', '2'),
 (10, 'TRX-20191116202541', 30, 0, 'pos', 'Express Next Day Barang', 42000, '2019-11-16 20:26:16', '1'),
 (11, 'TRX-20191123192721', 31, 0, 'jne', 'REG', 9000, '2019-11-23 19:32:53', '1'),
 (12, 'TRX-20191126123413', 31, 0, 'jne', 'OKE', 8000, '2019-11-26 12:35:03', '1'),
@@ -1120,29 +1132,33 @@ INSERT INTO `rb_penjualan` (`id_penjualan`, `kode_transaksi`, `id_pembeli`, `dis
 (14, 'TRX-20191126142109', 32, 0, 'cod', 'Cash on delivery', 1, '2019-11-26 14:25:32', '0'),
 (15, 'TRX-20191128231441', 31, 0, 'jne', 'REG', 9000, '2019-11-28 23:18:22', '0'),
 (16, 'TRX-20191129005252', 31, 0, 'jne', 'REG', 9000, '2019-11-29 00:53:38', '2'),
-(17, 'TRX-20191203213640', 37, 0, 'tiki', 'ECO', 12000, '2019-12-03 21:36:57', '0'),
+(17, 'TRX-20191203213640', 37, 0, 'tiki', 'ECO', 12000, '2019-12-03 21:36:57', '2'),
 (18, 'TRX-20191203213727', 37, 0, 'jne', 'OKE', 9000, '2019-12-03 21:37:42', '2'),
 (19, 'TRX-20191203213859', 37, 0, 'pos', 'Paket Kilat Khusus', 15000, '2019-12-03 21:39:17', '2'),
 (20, 'TRX-20191203214002', 37, 0, 'tiki', 'ECO', 12000, '2019-12-03 21:40:35', '2'),
-(21, 'TRX-20191203234202', 37, 0, 'jne', 'OKE', 9000, '2019-12-03 23:42:23', '0');
+(21, 'TRX-20191203234202', 37, 0, 'jne', 'OKE', 9000, '2019-12-03 23:42:23', '0'),
+(22, 'TRX-20200812171701', 38, 0, 'jne', 'Cash on delivery', 1, '2020-08-12 17:17:18', '2'),
+(23, 'TRX-20200813001332', 38, 0, 'tiki', 'Cash on delivery', 1, '2020-08-13 00:23:46', '2'),
+(24, 'TRX-20200814130503', 38, 0, 'jne', 'Cash on delivery', 1, '2020-08-14 13:07:29', '0'),
+(25, 'TRX-20201105134713', 39, 0, 'jne', 'Cash on delivery', 1, '2020-11-05 13:51:40', '2');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rb_penjualan_detail`
+-- Struktur dari tabel `rb_penjualan_detail`
 --
 
-CREATE TABLE IF NOT EXISTS `rb_penjualan_detail` (
-`id_penjualan_detail` int(11) NOT NULL,
+CREATE TABLE `rb_penjualan_detail` (
+  `id_penjualan_detail` int(11) NOT NULL,
   `id_penjualan` int(11) NOT NULL,
   `id_produk` int(11) NOT NULL,
   `jumlah` int(11) NOT NULL,
   `harga_jual` int(11) NOT NULL,
   `satuan` varchar(50) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `rb_penjualan_detail`
+-- Dumping data untuk tabel `rb_penjualan_detail`
 --
 
 INSERT INTO `rb_penjualan_detail` (`id_penjualan_detail`, `id_penjualan`, `id_produk`, `jumlah`, `harga_jual`, `satuan`) VALUES
@@ -1173,42 +1189,47 @@ INSERT INTO `rb_penjualan_detail` (`id_penjualan_detail`, `id_penjualan`, `id_pr
 (25, 18, 19, 1, 50000, 'ya'),
 (26, 19, 22, 1, 50000, 'Ya'),
 (27, 20, 21, 1, 50000, 'Ya'),
-(28, 21, 27, 1, 35000, '35000');
+(28, 21, 27, 1, 35000, '35000'),
+(29, 22, 28, 1, 45000, 'ya'),
+(30, 23, 28, 100, 150000, 'ya'),
+(31, 24, 28, 3, 150000, 'ya'),
+(32, 25, 29, 2, 75000, 'ya');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rb_penjualan_temp`
+-- Struktur dari tabel `rb_penjualan_temp`
 --
 
-CREATE TABLE IF NOT EXISTS `rb_penjualan_temp` (
-`id_penjualan_detail` int(11) NOT NULL,
+CREATE TABLE `rb_penjualan_temp` (
+  `id_penjualan_detail` int(11) NOT NULL,
   `session` varchar(50) NOT NULL,
   `id_produk` int(11) NOT NULL,
   `jumlah` int(11) NOT NULL,
   `harga_jual` int(11) NOT NULL,
   `satuan` varchar(50) NOT NULL,
   `waktu_order` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `rb_penjualan_temp`
+-- Dumping data untuk tabel `rb_penjualan_temp`
 --
 
 INSERT INTO `rb_penjualan_temp` (`id_penjualan_detail`, `session`, `id_produk`, `jumlah`, `harga_jual`, `satuan`, `waktu_order`) VALUES
 (1, 'TRX-20190713075833', 12, 1, 65000, 'unit', '2019-07-13 07:58:33'),
 (2, 'TRX-20190716144451', 13, 1, 65000, 'pcs', '2019-07-16 14:44:51'),
 (3, 'TRX-20190716144451', 7, 1, 99000, 'unit', '2019-07-16 14:45:11'),
-(11, 'TRX-20191128230251', 20, 1, 50000, 'Ya', '2019-11-28 23:02:51');
+(11, 'TRX-20191128230251', 20, 1, 50000, 'Ya', '2019-11-28 23:02:51'),
+(23, 'TRX-20201104081731', 25, 1, 450000, 'ya', '2020-11-04 08:17:31');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rb_produk`
+-- Struktur dari tabel `rb_produk`
 --
 
-CREATE TABLE IF NOT EXISTS `rb_produk` (
-`id_produk` int(11) NOT NULL,
+CREATE TABLE `rb_produk` (
+  `id_produk` int(11) NOT NULL,
   `id_kategori_produk` int(11) NOT NULL,
   `nama_produk` varchar(255) NOT NULL,
   `produk_seo` varchar(255) NOT NULL,
@@ -1224,40 +1245,40 @@ CREATE TABLE IF NOT EXISTS `rb_produk` (
   `keterangan` text NOT NULL,
   `username` varchar(50) NOT NULL,
   `waktu_input` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `rb_produk`
+-- Dumping data untuk tabel `rb_produk`
 --
 
 INSERT INTO `rb_produk` (`id_produk`, `id_kategori_produk`, `nama_produk`, `produk_seo`, `satuan`, `harga_beli`, `harga_reseller`, `harga_konsumen`, `biaya_pesan`, `biaya_simpan`, `berat`, `diskon`, `gambar`, `keterangan`, `username`, `waktu_input`) VALUES
-(17, 11, 'Couple BT21', 'couple-bt21', 'ya', 30000, 45000, 50000, 2000, 15, '200', 0, 'case11.jpg', '<p>Soft case ini tersedia untuk type Hp:<br />\r\n- All Type Xiaomi<br />\r\n- All Type Vivo<br />\r\n- All Type Oppo<br />\r\n- All Type Samsung<br />\r\n- All Type iPhone<br />\r\n- All Type Huawei<br />\r\n- All Type &nbsp;</p>\r\n\r\n<p>Tipe handphone yang tidak tertera bisa menghubungi admin untuk ketersediaan lebih jelasnya...<br />\r\nHappy Shopping...</p>\r\n', 'admin', '2019-11-28 22:28:12'),
-(18, 11, 'Heart Series', 'heart-series', 'ya', 25000, 45000, 50000, 2000, 15, '200', 0, 'case81.jpg', '<p>&nbsp;</p>\r\n\r\n<p><strong>Soft case ini tersedia untuk type Hp:<br />\r\n- All Type Xiaomi<br />\r\n- All Type Vivo<br />\r\n- All Type Oppo<br />\r\n- All Type Samsung<br />\r\n- All Type iPhone<br />\r\n- All Type Huawei<br />\r\n- All Type &nbsp;</strong></p>\r\n\r\n<p><strong>Tipe handphone yang tidak tertera bisa menghubungi admin untuk ketersediaan lebih jelasnya...<br />\r\nHappy Shopping...</strong></p>\r\n', 'admin', '2019-11-28 22:31:40'),
-(19, 2, 'Toy Story Ty 1', 'toy-story-ty-1', 'ya', 25000, 45000, 50000, 2000, 15, '200', 0, 'case21.jpg', '<p>&nbsp;</p>\r\n\r\n<p><strong>Soft case ini tersedia untuk type Hp:<br />\r\n- All Type Xiaomi<br />\r\n- All Type Vivo<br />\r\n- All Type Oppo<br />\r\n- All Type Samsung<br />\r\n- All Type iPhone<br />\r\n- All Type Huawei<br />\r\n- All Type &nbsp;</strong></p>\r\n\r\n<p><strong>Tipe handphone yang tidak tertera bisa menghubungi admin untuk ketersediaan lebih jelasnya...<br />\r\nHappy Shopping...</strong></p>\r\n', 'admin', '2019-11-28 22:42:31'),
-(20, 2, 'Planet Series v1', 'planet-series-v1', 'Ya', 25000, 45000, 50000, 1000, 15, '100', 0, 'case41.jpg', '<p>&nbsp;</p>\r\n\r\n<p><strong>Soft case ini tersedia untuk type Hp:<br />\r\n- All Type Xiaomi<br />\r\n- All Type Vivo<br />\r\n- All Type Oppo<br />\r\n- All Type Samsung<br />\r\n- All Type iPhone<br />\r\n- All Type Huawei<br />\r\n- All Type &nbsp;</strong></p>\r\n\r\n<p><strong>Tipe handphone yang tidak tertera bisa menghubungi admin untuk ketersediaan lebih jelasnya...<br />\r\nHappy Shopping...</strong></p>\r\n', 'admin', '2019-11-28 22:50:10'),
-(21, 2, 'Planet Series v2', 'planet-series-v2', 'Ya', 25000, 45000, 50000, 1000, 15, '100', 0, 'case51.jpg', '', 'admin', '2019-11-28 22:50:56'),
-(22, 2, 'Game Fun CY', 'game-fun-cy', 'Ya', 25000, 45000, 50000, 1000, 15, '100', 0, 'case71.jpg', '', 'admin', '2019-11-28 22:57:20'),
-(23, 2, 'Marble Glass Black', 'marble-glass-black', 'ya', 35000, 50000, 60000, 1000, 15, '100', 0, 'case121.jpg', '', 'admin', '2019-12-03 23:20:57'),
-(24, 2, 'Blink Case', 'blink-case', 'Ya', 30000, 50000, 55000, 1000, 15, '100', 0, 'case131.jpg', '', 'admin', '2019-12-03 23:22:24'),
-(25, 1, 'Titanium Case', 'titanium-case', 'ya', 25000, 40000, 45000, 1000, 15, '100', 0, 'case141.jpg', '', 'admin', '2019-12-03 23:24:25'),
-(26, 2, 'Ccarbon Case', 'ccarbon-case', 'ya', 30000, 40000, 45000, 1000, 15, '100', 0, 'casetagram_id-20191203-0007.jpg', '<p>&nbsp;</p>\r\n\r\n<p><strong>Soft case ini tersedia untuk type Hp:<br />\r\n- All Type Xiaomi<br />\r\n- All Type Vivo<br />\r\n- All Type Oppo<br />\r\n- All Type Samsung<br />\r\n- All Type iPhone<br />\r\n- All Type Huawei<br />\r\n- All Type &nbsp;</strong></p>\r\n\r\n<p><strong>Tipe handphone yang tidak tertera bisa menghubungi admin untuk ketersediaan lebih jelasnya...<br />\r\nHappy Shopping...</strong></p>\r\n', 'admin', '2019-12-03 23:35:16'),
-(27, 1, 'Chrome Case', 'chrome-case', 'ya', 15000, 30000, 35000, 1000, 15, '90', 0, 'casetagram_id-20191203-0008.jpg', '<p>&nbsp;</p>\r\n\r\n<p><strong>Soft case ini tersedia untuk type Hp:<br />\r\n- All Type Xiaomi<br />\r\n- All Type Vivo<br />\r\n- All Type Oppo<br />\r\n- All Type Samsung<br />\r\n- All Type iPhone<br />\r\n- All Type Huawei<br />\r\n- All Type &nbsp;</strong></p>\r\n\r\n<p><strong>Tipe handphone yang tidak tertera bisa menghubungi admin untuk ketersediaan lebih jelasnya...<br />\r\nHappy Shopping...</strong></p>\r\n', 'admin', '2019-12-03 23:36:24'),
-(28, 1, 'Macarons Case', 'macarons-case', 'ya', 30000, 40000, 45000, 1000, 15, '100', 0, 'casetagram_id-20191203-0006.jpg', '<p>&nbsp;</p>\r\n\r\n<p><strong>Soft case ini tersedia untuk type Hp:<br />\r\n- All Type Xiaomi<br />\r\n- All Type Vivo<br />\r\n- All Type Oppo<br />\r\n- All Type Samsung<br />\r\n- All Type iPhone<br />\r\n- All Type Huawei<br />\r\n- All Type &nbsp;</strong></p>\r\n\r\n<p><strong>Tipe handphone yang tidak tertera bisa menghubungi admin untuk ketersediaan lebih jelasnya...<br />\r\nHappy Shopping...</strong></p>\r\n', 'admin', '2019-12-03 23:38:02'),
-(29, 2, 'Case Titanium XY', 'case-titanium-xy', 'ya', 30000, 45000, 50000, 1000, 15, '100', 0, 'case101.jpg', '', 'admin', '2019-12-07 23:14:00');
+(17, 1, 'Gamis Ungu', 'gamis-ungu', 'ya', 100000, 115000, 130000, 2000, 15, '200', 0, 'ungu.jpg', '<p>Gamis abu-abu cocok untuk dipakai berpergin ke kampus, mall dan lain-lain</p>\r\n', 'admin', '2019-11-28 22:28:12'),
+(18, 1, 'Gamis Putih', 'gamis-putih', 'ya', 65000, 70000, 80000, 2000, 15, '200', 0, 'putih.jpg', '<p>Gamis abu-abu cocok untuk dipakai berpergin ke kampus, mall dan lain-lain</p>\r\n', 'admin', '2019-11-28 22:31:40'),
+(19, 1, 'Gamis Orange', 'gamis-orange', 'ya', 60000, 65000, 75000, 999, 15, '200', 0, 'kuning.jpg', '<p>Gamis abu-abu cocok untuk dipakai berpergin ke kampus, mall dan lain-lain</p>\r\n', 'admin', '2019-11-28 22:42:31'),
+(20, 4, 'Merah Gucci', 'merah-gucci', 'Ya', 80000, 85000, 100000, 1000, 15, '100', 0, 'kembang.jpg', '<p>Gamis abu-abu cocok untuk dipakai berpergin ke kampus, mall dan lain-lain</p>\r\n', 'admin', '2019-11-28 22:50:10'),
+(21, 11, 'Cople Merah Abu-abu', 'cople-merah-abuabu', 'Ya', 400000, 420000, 450000, 1500, 15, '200', 0, 'coplemerah.jpg', '<p>Gamis abu-abu cocok untuk dipakai berpergin ke kampus, mall dan lain-lain</p>\r\n', 'admin', '2019-11-28 22:50:56'),
+(22, 1, 'Hitam Abu-abu', 'hitam-abuabu', 'Ya', 60000, 65000, 75000, 1000, 15, '100', 0, 'hitam.jpg', '<p>Gamis abu-abu cocok untuk dipakai berpergin ke kampus, mall dan lain-lain</p>\r\n', 'admin', '2019-11-28 22:57:20'),
+(23, 11, 'Long Dress Abu-abu', 'long-dress-abuabu', 'ya', 60000, 65000, 75000, 1000, 15, '100', 0, 'garis.jpg', '<p>Gamis abu-abu cocok untuk dipakai berpergin ke kampus, mall dan lain-lain</p>\r\n', 'admin', '2019-12-03 23:20:57'),
+(24, 2, 'Jilbab Pink Panjang', 'jilbab-pink-panjang', 'Ya', 30000, 35000, 40000, 1000, 15, '100', 0, 'dimasjid.jpg', '<p>Gamis abu-abu cocok untuk dipakai berpergin ke kampus, mall dan lain-lain</p>\r\n', 'admin', '2019-12-03 23:22:24'),
+(25, 11, 'Cople Batik Hitam', 'cople-batik-hitam', 'ya', 400000, 420000, 450000, 1000, 15, '200', 0, 'copleitem.jpg', '<p>Gamis abu-abu cocok untuk dipakai berpergin ke kampus, mall dan lain-lain</p>\r\n', 'admin', '2019-12-03 23:24:25'),
+(26, 11, 'Cople Batik Coklat', 'cople-batik-coklat', 'ya', 400000, 420000, 450000, 1000, 15, '100', 0, 'coplebatik.jpg', '<p>Gamis abu-abu cocok untuk dipakai berpergin ke kampus, mall dan lain-lain</p>\r\n', 'admin', '2019-12-03 23:35:16'),
+(27, 1, 'Gamis Coklat', 'gamis-coklat', 'ya', 60000, 65000, 75000, 1000, 15, '100', 0, 'coklat1.jpg', '<p>Gamis abu-abu cocok untuk dipakai berpergin ke kampus, mall dan lain-lain</p>\r\n', 'admin', '2019-12-03 23:36:24'),
+(28, 1, 'Gamis Rajut Biru', 'gamis-rajut-biru', 'ya', 120000, 125000, 150000, 1000, 15, '100', 0, 'biru_bagus.jpg', '<p>Gamis abu-abu cocok untuk dipakai berpergin ke kampus, mall dan lain-lain</p>\r\n', 'admin', '2019-12-03 23:38:02'),
+(29, 1, 'Gamis Abu-abu', 'gamis-abuabu', 'ya', 60000, 65000, 75000, 1000, 89, '100', 0, 'abu1.jpg', '<p>&nbsp;</p>\r\n\r\n<p>Gamis abu-abu cocok untuk dipakai berpergin ke kampus, mall dan lain-lain</p>\r\n', 'admin', '2019-12-07 23:14:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rb_provinsi`
+-- Struktur dari tabel `rb_provinsi`
 --
 
-CREATE TABLE IF NOT EXISTS `rb_provinsi` (
-`provinsi_id` int(11) NOT NULL,
+CREATE TABLE `rb_provinsi` (
+  `provinsi_id` int(11) NOT NULL,
   `nama_provinsi` varchar(50) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `rb_provinsi`
+-- Dumping data untuk tabel `rb_provinsi`
 --
 
 INSERT INTO `rb_provinsi` (`provinsi_id`, `nama_provinsi`) VALUES
@@ -1299,32 +1320,32 @@ INSERT INTO `rb_provinsi` (`provinsi_id`, `nama_provinsi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rb_rekening`
+-- Struktur dari tabel `rb_rekening`
 --
 
-CREATE TABLE IF NOT EXISTS `rb_rekening` (
-`id_rekening` int(5) NOT NULL,
+CREATE TABLE `rb_rekening` (
+  `id_rekening` int(5) NOT NULL,
   `nama_bank` varchar(50) NOT NULL,
   `no_rekening` varchar(50) NOT NULL,
   `pemilik_rekening` varchar(150) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `rb_rekening`
+-- Dumping data untuk tabel `rb_rekening`
 --
 
 INSERT INTO `rb_rekening` (`id_rekening`, `nama_bank`, `no_rekening`, `pemilik_rekening`) VALUES
-(1, 'BRI', '547601016142539', 'ANI RAHMAWATI'),
-(2, 'BCA', '0320943647', 'ANI RAHMAWATI');
+(2, 'BCA', '0320943647', 'ANI RAHMAWATI'),
+(3, 'BNI', '0816692846', 'Sahrul Rasyid');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rb_supplier`
+-- Struktur dari tabel `rb_supplier`
 --
 
-CREATE TABLE IF NOT EXISTS `rb_supplier` (
-`id_supplier` int(11) NOT NULL,
+CREATE TABLE `rb_supplier` (
+  `id_supplier` int(11) NOT NULL,
   `nama_supplier` varchar(255) NOT NULL,
   `kontak_person` varchar(100) NOT NULL,
   `alamat_lengkap` text NOT NULL,
@@ -1334,46 +1355,46 @@ CREATE TABLE IF NOT EXISTS `rb_supplier` (
   `no_telpon` varchar(15) NOT NULL,
   `fax` varchar(15) NOT NULL,
   `katerangan` text NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `rb_supplier`
+-- Dumping data untuk tabel `rb_supplier`
 --
 
 INSERT INTO `rb_supplier` (`id_supplier`, `nama_supplier`, `kontak_person`, `alamat_lengkap`, `no_hp`, `alamat_email`, `kode_pos`, `no_telpon`, `fax`, `katerangan`) VALUES
 (1, 'PT. Elektronik Jaya Abadi', 'Muhammad Arsen', 'Jl. Siti Nurbayara, No 23 D, Tunggul Hitam, Padang', '082173054522', 'jaya.abadi@gmail.com', 56123, '0751461692', '0751461691', 'Tidak ada keterangan,..'),
 (2, 'PT. Muda Hardware Sejahtera', 'Saiful Tanjung', 'Jl. Persada Ramayana, Ulak Karang, Padang', '098912334566', 'hardware.sejahtera@gmail.com', 87632, '075165321', '075165312', 'Tidak ada keterangan,..'),
-(3, 'PT. Kereta Kencana', 'Arsenio Orlando', 'Jl. Linggar Jati, No 345, Koto Tangah, padang', '82173054486', 'kereta.kencana@gmail.com', 34587, '0751461692', '0751461693', 'Tidak ada keterangan,..');
+(3, 'PT. Kereta Kencana', 'Arsenio Orlando', 'Jl. Linggar Jati, No 345, Koto Tangah, padang', '82173054486', 'kereta.kencana@gmail.com', 34587, '0751461692', '0751461693', 'Tidak ada keterangan,..'),
+(4, 'PT.Sediri', '0833242323', 'attire', '08442678543', 'aaaa@gmail.com', 13530, '097878787878', '11111111', 'pabrik sendiri');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `slide`
+-- Struktur dari tabel `slide`
 --
 
-CREATE TABLE IF NOT EXISTS `slide` (
-`id_slide` int(5) NOT NULL,
+CREATE TABLE `slide` (
+  `id_slide` int(5) NOT NULL,
   `keterangan` text NOT NULL,
   `gambar` varchar(255) NOT NULL,
   `waktu` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `slide`
+-- Dumping data untuk tabel `slide`
 --
 
 INSERT INTO `slide` (`id_slide`, `keterangan`, `gambar`, `waktu`) VALUES
-(5, 'Anticrack Elastis Yang Akan Lindungi Handphonemu', 'S12.jpg', '2019-11-23 09:44:18'),
-(6, 'Softcase Dengan Kualitas Printing Bambar Yang Berkualitas.', 'S22.jpg', '2019-11-23 09:45:15'),
-(7, 'Hardcase Lindungi dan Percantik Tampilan Handphon Kesayanganmu.', 'S32.jpg', '2019-11-23 09:45:54');
+(16, '', 'diskon.jpg', '2020-11-05 13:42:56'),
+(12, '', 'attire_putih.png', '2020-11-05 13:05:04');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `statistik`
+-- Struktur dari tabel `statistik`
 --
 
-CREATE TABLE IF NOT EXISTS `statistik` (
+CREATE TABLE `statistik` (
   `ip` varchar(20) NOT NULL DEFAULT '',
   `tanggal` date NOT NULL,
   `hits` int(10) NOT NULL DEFAULT '1',
@@ -1381,7 +1402,7 @@ CREATE TABLE IF NOT EXISTS `statistik` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `statistik`
+-- Dumping data untuk tabel `statistik`
 --
 
 INSERT INTO `statistik` (`ip`, `tanggal`, `hits`, `online`) VALUES
@@ -3184,24 +3205,36 @@ INSERT INTO `statistik` (`ip`, `tanggal`, `hits`, `online`) VALUES
 ('::1', '2019-12-01', 23, '1575190387'),
 ('::1', '2019-12-03', 64, '1575391347'),
 ('::1', '2019-12-07', 5, '1575735485'),
-('::1', '2019-12-08', 3, '1575776342');
+('::1', '2019-12-08', 3, '1575776342'),
+('::1', '2020-08-12', 114, '1597251496'),
+('::1', '2020-08-13', 62, '1597337139'),
+('::1', '2020-08-14', 93, '1597385252'),
+('::1', '2020-08-15', 4, '1597433701'),
+('::1', '2020-08-17', 3, '1597652553'),
+('::1', '2020-08-18', 1, '1597767201'),
+('::1', '2020-08-19', 8, '1597773799'),
+('::1', '2020-09-19', 4, '1600498766'),
+('::1', '2020-10-06', 15, '1601930638'),
+('::1', '2020-11-03', 12, '1604400446'),
+('::1', '2020-11-04', 5, '1604454560'),
+('::1', '2020-11-05', 84, '1604560369');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tag`
+-- Struktur dari tabel `tag`
 --
 
-CREATE TABLE IF NOT EXISTS `tag` (
-`id_tag` int(5) NOT NULL,
+CREATE TABLE `tag` (
+  `id_tag` int(5) NOT NULL,
   `nama_tag` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
   `tag_seo` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `count` int(5) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=55 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
--- Dumping data for table `tag`
+-- Dumping data untuk tabel `tag`
 --
 
 INSERT INTO `tag` (`id_tag`, `nama_tag`, `username`, `tag_seo`, `count`) VALUES
@@ -3228,20 +3261,20 @@ INSERT INTO `tag` (`id_tag`, `nama_tag`, `username`, `tag_seo`, `count`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `templates`
+-- Struktur dari tabel `templates`
 --
 
-CREATE TABLE IF NOT EXISTS `templates` (
-`id_templates` int(5) NOT NULL,
+CREATE TABLE `templates` (
+  `id_templates` int(5) NOT NULL,
   `judul` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
   `pembuat` varchar(50) COLLATE latin1_general_ci NOT NULL,
   `folder` varchar(50) COLLATE latin1_general_ci NOT NULL,
   `aktif` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'N'
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
--- Dumping data for table `templates`
+-- Dumping data untuk tabel `templates`
 --
 
 INSERT INTO `templates` (`id_templates`, `judul`, `username`, `pembuat`, `folder`, `aktif`) VALUES
@@ -3250,33 +3283,34 @@ INSERT INTO `templates` (`id_templates`, `judul`, `username`, `pembuat`, `folder
 -- --------------------------------------------------------
 
 --
--- Table structure for table `testimoni`
+-- Struktur dari tabel `testimoni`
 --
 
-CREATE TABLE IF NOT EXISTS `testimoni` (
-`id_testimoni` int(11) NOT NULL,
+CREATE TABLE `testimoni` (
+  `id_testimoni` int(11) NOT NULL,
   `id_konsumen` int(11) NOT NULL,
   `isi_testimoni` text NOT NULL,
   `aktif` enum('Y','N') NOT NULL,
   `waktu_testimoni` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `testimoni`
+-- Dumping data untuk tabel `testimoni`
 --
 
 INSERT INTO `testimoni` (`id_testimoni`, `id_konsumen`, `isi_testimoni`, `aktif`, `waktu_testimoni`) VALUES
 (7, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque condimentum mattis. Suspendisse potenti. Proin vitae elementum nisi. Aliquam eu pretium risus. Nam varius efficitur consectetur.', 'Y', '2018-03-03 15:19:50'),
-(8, 31, '<p>Mantap, terimakasih</p>\r\n', 'Y', '2019-12-01 15:42:12');
+(8, 31, '<p>Mantap, terimakasih</p>\r\n', 'Y', '2019-12-01 15:42:12'),
+(9, 39, 'Ikan Hiu Makan Tomat', 'N', '2020-11-05 14:08:44');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
-`id_users` int(11) NOT NULL,
+CREATE TABLE `users` (
+  `id_users` int(11) NOT NULL,
   `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
   `password` varchar(255) COLLATE latin1_general_ci NOT NULL,
   `nama_lengkap` varchar(100) COLLATE latin1_general_ci NOT NULL,
@@ -3286,31 +3320,30 @@ CREATE TABLE IF NOT EXISTS `users` (
   `level` varchar(20) COLLATE latin1_general_ci NOT NULL DEFAULT 'user',
   `blokir` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'N',
   `id_session` varchar(255) COLLATE latin1_general_ci NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id_users`, `username`, `password`, `nama_lengkap`, `email`, `no_telp`, `foto`, `level`, `blokir`, `id_session`) VALUES
-(1, 'admin', 'edbd881f1ee2f76ba0bd70fd184f87711be991a0401fd07ccd4b199665f00761afc91731d8d8ba6cbb188b2ed5bfb465b9f3d30231eb0430b9f90fe91d136648', 'ANI RAHMAWATI', 'anirachma398@gmail.com', '081510267486', 'aniiii.jpeg', 'admin', 'N', 'q173s8hs1jl04st35169ccl8o7'),
-(4, 'tumblertees', 'd7d2f602e155ba700ed76c48d9a48009b9383e8d17435bfb0fe8ad7c664d4002f16cc7a65c6fb066963714a794f96441ef7f9b9c1b1456acfb9225cbad474fb0', 'TUBLERTEES', 'tumblertees@gmail.com', '099999877667', 'logo1.png', 'admin', 'N', '6c2a534f2ab93827d6605ec1cf43b767-20191116201849'),
-(5, 'aniani', 'd7d2f602e155ba700ed76c48d9a48009b9383e8d17435bfb0fe8ad7c664d4002f16cc7a65c6fb066963714a794f96441ef7f9b9c1b1456acfb9225cbad474fb0', 'Admin Ani ', 'aniani@gmail.com', '098475677466', '', 'admin', 'N', '3822548af0ca38ff57751a03d00c1219-20191123093705');
+(1, 'admin', 'edbd881f1ee2f76ba0bd70fd184f87711be991a0401fd07ccd4b199665f00761afc91731d8d8ba6cbb188b2ed5bfb465b9f3d30231eb0430b9f90fe91d136648', 'ADMIN', 'owel.ochit@gmail.com', '082111834946', 'PPED2735.JPG', 'admin', 'N', 'q173s8hs1jl04st35169ccl8o7'),
+(6, 'sahrul98', 'e3a18a4c51f2eed2456fc48573de06bbff5611978fa0e6d4ea3fd3d3eeb8a326a847e1c8aa67fc0df59b60a530bf47dadeb16ce2809d80dde0c32a59d61bd9d6', 'Sahrul Rasyid', 'sahrul.unas@gmail.com', '082111834946', 'profil.jpg', 'admin', 'N', '18072eda03746a15e34df4f4ffe3b1eb-20200814013734');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users_modul`
+-- Struktur dari tabel `users_modul`
 --
 
-CREATE TABLE IF NOT EXISTS `users_modul` (
-`id_umod` int(11) NOT NULL,
+CREATE TABLE `users_modul` (
+  `id_umod` int(11) NOT NULL,
   `id_session` varchar(255) NOT NULL,
   `id_modul` int(11) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users_modul`
+-- Dumping data untuk tabel `users_modul`
 --
 
 INSERT INTO `users_modul` (`id_umod`, `id_session`, `id_modul`) VALUES
@@ -3352,368 +3385,420 @@ INSERT INTO `users_modul` (`id_umod`, `id_session`, `id_modul`) VALUES
 (37, '3822548af0ca38ff57751a03d00c1219-20191123093705', 31),
 (38, '3822548af0ca38ff57751a03d00c1219-20191123093705', 18),
 (39, '3822548af0ca38ff57751a03d00c1219-20191123093705', 10),
-(40, '3822548af0ca38ff57751a03d00c1219-20191123093705', 2);
+(41, '18072eda03746a15e34df4f4ffe3b1eb-20200814013734', 78),
+(43, '18072eda03746a15e34df4f4ffe3b1eb-20200814013734', 66),
+(44, '18072eda03746a15e34df4f4ffe3b1eb-20200814013734', 61),
+(45, '18072eda03746a15e34df4f4ffe3b1eb-20200814013734', 59),
+(46, '18072eda03746a15e34df4f4ffe3b1eb-20200814013734', 57),
+(47, '18072eda03746a15e34df4f4ffe3b1eb-20200814013734', 46),
+(48, '18072eda03746a15e34df4f4ffe3b1eb-20200814013734', 33),
+(49, '18072eda03746a15e34df4f4ffe3b1eb-20200814013734', 18),
+(50, '18072eda03746a15e34df4f4ffe3b1eb-20200814013734', 10),
+(51, '18072eda03746a15e34df4f4ffe3b1eb-20200814013734', 2),
+(52, 'q173s8hs1jl04st35169ccl8o7', 78),
+(54, 'q173s8hs1jl04st35169ccl8o7', 66),
+(55, 'q173s8hs1jl04st35169ccl8o7', 61),
+(56, 'q173s8hs1jl04st35169ccl8o7', 59),
+(57, 'q173s8hs1jl04st35169ccl8o7', 57),
+(58, 'q173s8hs1jl04st35169ccl8o7', 46),
+(59, 'q173s8hs1jl04st35169ccl8o7', 33),
+(60, 'q173s8hs1jl04st35169ccl8o7', 18),
+(61, 'q173s8hs1jl04st35169ccl8o7', 10),
+(62, 'q173s8hs1jl04st35169ccl8o7', 2);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `album`
+-- Indeks untuk tabel `album`
 --
 ALTER TABLE `album`
- ADD PRIMARY KEY (`id_album`);
+  ADD PRIMARY KEY (`id_album`);
 
 --
--- Indexes for table `berita`
+-- Indeks untuk tabel `berita`
 --
 ALTER TABLE `berita`
- ADD PRIMARY KEY (`id_berita`);
+  ADD PRIMARY KEY (`id_berita`);
 
 --
--- Indexes for table `download`
+-- Indeks untuk tabel `download`
 --
 ALTER TABLE `download`
- ADD PRIMARY KEY (`id_download`);
+  ADD PRIMARY KEY (`id_download`);
 
 --
--- Indexes for table `gallery`
+-- Indeks untuk tabel `gallery`
 --
 ALTER TABLE `gallery`
- ADD PRIMARY KEY (`id_gallery`);
+  ADD PRIMARY KEY (`id_gallery`);
 
 --
--- Indexes for table `halamanstatis`
+-- Indeks untuk tabel `halamanstatis`
 --
 ALTER TABLE `halamanstatis`
- ADD PRIMARY KEY (`id_halaman`);
+  ADD PRIMARY KEY (`id_halaman`);
 
 --
--- Indexes for table `hubungi`
+-- Indeks untuk tabel `hubungi`
 --
 ALTER TABLE `hubungi`
- ADD PRIMARY KEY (`id_hubungi`);
+  ADD PRIMARY KEY (`id_hubungi`);
 
 --
--- Indexes for table `identitas`
+-- Indeks untuk tabel `identitas`
 --
 ALTER TABLE `identitas`
- ADD PRIMARY KEY (`id_identitas`);
+  ADD PRIMARY KEY (`id_identitas`);
 
 --
--- Indexes for table `kategori`
+-- Indeks untuk tabel `kategori`
 --
 ALTER TABLE `kategori`
- ADD PRIMARY KEY (`id_kategori`);
+  ADD PRIMARY KEY (`id_kategori`);
 
 --
--- Indexes for table `logo`
+-- Indeks untuk tabel `logo`
 --
 ALTER TABLE `logo`
- ADD PRIMARY KEY (`id_logo`);
+  ADD PRIMARY KEY (`id_logo`);
 
 --
--- Indexes for table `menu`
+-- Indeks untuk tabel `menu`
 --
 ALTER TABLE `menu`
- ADD PRIMARY KEY (`id_menu`);
+  ADD PRIMARY KEY (`id_menu`);
 
 --
--- Indexes for table `modul`
+-- Indeks untuk tabel `modul`
 --
 ALTER TABLE `modul`
- ADD PRIMARY KEY (`id_modul`);
+  ADD PRIMARY KEY (`id_modul`);
 
 --
--- Indexes for table `pasangiklan`
+-- Indeks untuk tabel `pasangiklan`
 --
 ALTER TABLE `pasangiklan`
- ADD PRIMARY KEY (`id_pasangiklan`);
+  ADD PRIMARY KEY (`id_pasangiklan`);
 
 --
--- Indexes for table `rb_kategori_produk`
+-- Indeks untuk tabel `rb_kategori_produk`
 --
 ALTER TABLE `rb_kategori_produk`
- ADD PRIMARY KEY (`id_kategori_produk`);
+  ADD PRIMARY KEY (`id_kategori_produk`);
 
 --
--- Indexes for table `rb_keterangan`
+-- Indeks untuk tabel `rb_keterangan`
 --
 ALTER TABLE `rb_keterangan`
- ADD PRIMARY KEY (`id_keterangan`);
+  ADD PRIMARY KEY (`id_keterangan`);
 
 --
--- Indexes for table `rb_konfirmasi`
+-- Indeks untuk tabel `rb_konfirmasi`
 --
 ALTER TABLE `rb_konfirmasi`
- ADD PRIMARY KEY (`id_konfirmasi_pembayaran`);
+  ADD PRIMARY KEY (`id_konfirmasi_pembayaran`);
 
 --
--- Indexes for table `rb_konsumen`
+-- Indeks untuk tabel `rb_konsumen`
 --
 ALTER TABLE `rb_konsumen`
- ADD PRIMARY KEY (`id_konsumen`);
+  ADD PRIMARY KEY (`id_konsumen`);
 
 --
--- Indexes for table `rb_kota`
+-- Indeks untuk tabel `rb_kota`
 --
 ALTER TABLE `rb_kota`
- ADD PRIMARY KEY (`kota_id`);
+  ADD PRIMARY KEY (`kota_id`);
 
 --
--- Indexes for table `rb_pembelian`
+-- Indeks untuk tabel `rb_pembelian`
 --
 ALTER TABLE `rb_pembelian`
- ADD PRIMARY KEY (`id_pembelian`);
+  ADD PRIMARY KEY (`id_pembelian`);
 
 --
--- Indexes for table `rb_pembelian_detail`
+-- Indeks untuk tabel `rb_pembelian_detail`
 --
 ALTER TABLE `rb_pembelian_detail`
- ADD PRIMARY KEY (`id_pembelian_detail`);
+  ADD PRIMARY KEY (`id_pembelian_detail`);
 
 --
--- Indexes for table `rb_penjualan`
+-- Indeks untuk tabel `rb_penjualan`
 --
 ALTER TABLE `rb_penjualan`
- ADD PRIMARY KEY (`id_penjualan`);
+  ADD PRIMARY KEY (`id_penjualan`);
 
 --
--- Indexes for table `rb_penjualan_detail`
+-- Indeks untuk tabel `rb_penjualan_detail`
 --
 ALTER TABLE `rb_penjualan_detail`
- ADD PRIMARY KEY (`id_penjualan_detail`);
+  ADD PRIMARY KEY (`id_penjualan_detail`);
 
 --
--- Indexes for table `rb_penjualan_temp`
+-- Indeks untuk tabel `rb_penjualan_temp`
 --
 ALTER TABLE `rb_penjualan_temp`
- ADD PRIMARY KEY (`id_penjualan_detail`);
+  ADD PRIMARY KEY (`id_penjualan_detail`);
 
 --
--- Indexes for table `rb_produk`
+-- Indeks untuk tabel `rb_produk`
 --
 ALTER TABLE `rb_produk`
- ADD PRIMARY KEY (`id_produk`);
+  ADD PRIMARY KEY (`id_produk`);
 
 --
--- Indexes for table `rb_provinsi`
+-- Indeks untuk tabel `rb_provinsi`
 --
 ALTER TABLE `rb_provinsi`
- ADD PRIMARY KEY (`provinsi_id`);
+  ADD PRIMARY KEY (`provinsi_id`);
 
 --
--- Indexes for table `rb_rekening`
+-- Indeks untuk tabel `rb_rekening`
 --
 ALTER TABLE `rb_rekening`
- ADD PRIMARY KEY (`id_rekening`);
+  ADD PRIMARY KEY (`id_rekening`);
 
 --
--- Indexes for table `rb_supplier`
+-- Indeks untuk tabel `rb_supplier`
 --
 ALTER TABLE `rb_supplier`
- ADD PRIMARY KEY (`id_supplier`);
+  ADD PRIMARY KEY (`id_supplier`);
 
 --
--- Indexes for table `slide`
+-- Indeks untuk tabel `slide`
 --
 ALTER TABLE `slide`
- ADD PRIMARY KEY (`id_slide`);
+  ADD PRIMARY KEY (`id_slide`);
 
 --
--- Indexes for table `tag`
+-- Indeks untuk tabel `tag`
 --
 ALTER TABLE `tag`
- ADD PRIMARY KEY (`id_tag`);
+  ADD PRIMARY KEY (`id_tag`);
 
 --
--- Indexes for table `templates`
+-- Indeks untuk tabel `templates`
 --
 ALTER TABLE `templates`
- ADD PRIMARY KEY (`id_templates`);
+  ADD PRIMARY KEY (`id_templates`);
 
 --
--- Indexes for table `testimoni`
+-- Indeks untuk tabel `testimoni`
 --
 ALTER TABLE `testimoni`
- ADD PRIMARY KEY (`id_testimoni`);
+  ADD PRIMARY KEY (`id_testimoni`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
- ADD PRIMARY KEY (`id_users`);
+  ADD PRIMARY KEY (`id_users`);
 
 --
--- Indexes for table `users_modul`
+-- Indeks untuk tabel `users_modul`
 --
 ALTER TABLE `users_modul`
- ADD PRIMARY KEY (`id_umod`);
+  ADD PRIMARY KEY (`id_umod`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `album`
+-- AUTO_INCREMENT untuk tabel `album`
 --
 ALTER TABLE `album`
-MODIFY `id_album` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
+  MODIFY `id_album` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+
 --
--- AUTO_INCREMENT for table `berita`
+-- AUTO_INCREMENT untuk tabel `berita`
 --
 ALTER TABLE `berita`
-MODIFY `id_berita` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=302;
+  MODIFY `id_berita` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=302;
+
 --
--- AUTO_INCREMENT for table `download`
+-- AUTO_INCREMENT untuk tabel `download`
 --
 ALTER TABLE `download`
-MODIFY `id_download` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=45;
+  MODIFY `id_download` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+
 --
--- AUTO_INCREMENT for table `gallery`
+-- AUTO_INCREMENT untuk tabel `gallery`
 --
 ALTER TABLE `gallery`
-MODIFY `id_gallery` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=256;
+  MODIFY `id_gallery` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=256;
+
 --
--- AUTO_INCREMENT for table `halamanstatis`
+-- AUTO_INCREMENT untuk tabel `halamanstatis`
 --
 ALTER TABLE `halamanstatis`
-MODIFY `id_halaman` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=65;
+  MODIFY `id_halaman` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+
 --
--- AUTO_INCREMENT for table `hubungi`
+-- AUTO_INCREMENT untuk tabel `hubungi`
 --
 ALTER TABLE `hubungi`
-MODIFY `id_hubungi` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=48;
+  MODIFY `id_hubungi` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+
 --
--- AUTO_INCREMENT for table `identitas`
+-- AUTO_INCREMENT untuk tabel `identitas`
 --
 ALTER TABLE `identitas`
-MODIFY `id_identitas` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_identitas` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
--- AUTO_INCREMENT for table `kategori`
+-- AUTO_INCREMENT untuk tabel `kategori`
 --
 ALTER TABLE `kategori`
-MODIFY `id_kategori` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=57;
+  MODIFY `id_kategori` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+
 --
--- AUTO_INCREMENT for table `logo`
+-- AUTO_INCREMENT untuk tabel `logo`
 --
 ALTER TABLE `logo`
-MODIFY `id_logo` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+  MODIFY `id_logo` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
 --
--- AUTO_INCREMENT for table `menu`
+-- AUTO_INCREMENT untuk tabel `menu`
 --
 ALTER TABLE `menu`
-MODIFY `id_menu` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=148;
+  MODIFY `id_menu` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
+
 --
--- AUTO_INCREMENT for table `modul`
+-- AUTO_INCREMENT untuk tabel `modul`
 --
 ALTER TABLE `modul`
-MODIFY `id_modul` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=81;
+  MODIFY `id_modul` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+
 --
--- AUTO_INCREMENT for table `pasangiklan`
+-- AUTO_INCREMENT untuk tabel `pasangiklan`
 --
 ALTER TABLE `pasangiklan`
-MODIFY `id_pasangiklan` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
+  MODIFY `id_pasangiklan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
 --
--- AUTO_INCREMENT for table `rb_kategori_produk`
+-- AUTO_INCREMENT untuk tabel `rb_kategori_produk`
 --
 ALTER TABLE `rb_kategori_produk`
-MODIFY `id_kategori_produk` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `id_kategori_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
--- AUTO_INCREMENT for table `rb_keterangan`
+-- AUTO_INCREMENT untuk tabel `rb_keterangan`
 --
 ALTER TABLE `rb_keterangan`
-MODIFY `id_keterangan` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_keterangan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
--- AUTO_INCREMENT for table `rb_konfirmasi`
+-- AUTO_INCREMENT untuk tabel `rb_konfirmasi`
 --
 ALTER TABLE `rb_konfirmasi`
-MODIFY `id_konfirmasi_pembayaran` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+  MODIFY `id_konfirmasi_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
 --
--- AUTO_INCREMENT for table `rb_konsumen`
+-- AUTO_INCREMENT untuk tabel `rb_konsumen`
 --
 ALTER TABLE `rb_konsumen`
-MODIFY `id_konsumen` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=38;
+  MODIFY `id_konsumen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
 --
--- AUTO_INCREMENT for table `rb_kota`
+-- AUTO_INCREMENT untuk tabel `rb_kota`
 --
 ALTER TABLE `rb_kota`
-MODIFY `kota_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=502;
+  MODIFY `kota_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=502;
+
 --
--- AUTO_INCREMENT for table `rb_pembelian`
+-- AUTO_INCREMENT untuk tabel `rb_pembelian`
 --
 ALTER TABLE `rb_pembelian`
-MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
--- AUTO_INCREMENT for table `rb_pembelian_detail`
+-- AUTO_INCREMENT untuk tabel `rb_pembelian_detail`
 --
 ALTER TABLE `rb_pembelian_detail`
-MODIFY `id_pembelian_detail` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=40;
+  MODIFY `id_pembelian_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
 --
--- AUTO_INCREMENT for table `rb_penjualan`
+-- AUTO_INCREMENT untuk tabel `rb_penjualan`
 --
 ALTER TABLE `rb_penjualan`
-MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
 --
--- AUTO_INCREMENT for table `rb_penjualan_detail`
+-- AUTO_INCREMENT untuk tabel `rb_penjualan_detail`
 --
 ALTER TABLE `rb_penjualan_detail`
-MODIFY `id_penjualan_detail` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
+  MODIFY `id_penjualan_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
 --
--- AUTO_INCREMENT for table `rb_penjualan_temp`
+-- AUTO_INCREMENT untuk tabel `rb_penjualan_temp`
 --
 ALTER TABLE `rb_penjualan_temp`
-MODIFY `id_penjualan_detail` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+  MODIFY `id_penjualan_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
 --
--- AUTO_INCREMENT for table `rb_produk`
+-- AUTO_INCREMENT untuk tabel `rb_produk`
 --
 ALTER TABLE `rb_produk`
-MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
 --
--- AUTO_INCREMENT for table `rb_provinsi`
+-- AUTO_INCREMENT untuk tabel `rb_provinsi`
 --
 ALTER TABLE `rb_provinsi`
-MODIFY `provinsi_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
+  MODIFY `provinsi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
 --
--- AUTO_INCREMENT for table `rb_rekening`
+-- AUTO_INCREMENT untuk tabel `rb_rekening`
 --
 ALTER TABLE `rb_rekening`
-MODIFY `id_rekening` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_rekening` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
--- AUTO_INCREMENT for table `rb_supplier`
+-- AUTO_INCREMENT untuk tabel `rb_supplier`
 --
 ALTER TABLE `rb_supplier`
-MODIFY `id_supplier` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id_supplier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
--- AUTO_INCREMENT for table `slide`
+-- AUTO_INCREMENT untuk tabel `slide`
 --
 ALTER TABLE `slide`
-MODIFY `id_slide` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `id_slide` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
 --
--- AUTO_INCREMENT for table `tag`
+-- AUTO_INCREMENT untuk tabel `tag`
 --
 ALTER TABLE `tag`
-MODIFY `id_tag` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=55;
+  MODIFY `id_tag` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+
 --
--- AUTO_INCREMENT for table `templates`
+-- AUTO_INCREMENT untuk tabel `templates`
 --
 ALTER TABLE `templates`
-MODIFY `id_templates` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+  MODIFY `id_templates` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
 --
--- AUTO_INCREMENT for table `testimoni`
+-- AUTO_INCREMENT untuk tabel `testimoni`
 --
 ALTER TABLE `testimoni`
-MODIFY `id_testimoni` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id_testimoni` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
--- AUTO_INCREMENT for table `users_modul`
+-- AUTO_INCREMENT untuk tabel `users_modul`
 --
 ALTER TABLE `users_modul`
-MODIFY `id_umod` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=41;
+  MODIFY `id_umod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
